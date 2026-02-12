@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: gitops-fullstack-app-deployment
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: gitops-fullstack-app
