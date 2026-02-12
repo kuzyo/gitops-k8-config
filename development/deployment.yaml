@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitops-fullstack-app-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gitops-fullstack-app
+  template:
+    metadata:
+      labels:
+        app: gitops-fullstack-app
+    spec:
+      containers:
+        - name: gitops-fullstack-app
+          image: kuzyoyaroslav/gitops-fullstack-app:v1
+          ports:
+            - containerPort: 3001
