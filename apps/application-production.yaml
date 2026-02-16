@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gitops-fullstack-app
+  name: gitops-fullstack-app-production
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/kuzyo/gitops-k8-config.git
     targetRevision: HEAD
-    path: development
+    path: production
   destination:
     server: https://kubernetes.default.svc
-    namespace: gitops-fullstack-app
+    namespace: gitops-fullstack-app-production
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
