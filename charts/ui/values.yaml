@@ -1,0 +1,9 @@
+replicas: 1
+
+image:
+  repository: kuzyoyaroslav/gitops-fullstack-app-ui
+  tag: latest
+
+service:
+  port: 3000
+  type: NodePort

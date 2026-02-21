@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitops-fullstack-app-ui-deployment
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: gitops-fullstack-app-ui
+  template:
+    metadata:
+      labels:
+        app: gitops-fullstack-app-ui
+    spec:
+      containers:
+        - name: gitops-fullstack-app-ui
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          ports:
+            - containerPort: {{ .Values.service.port }}

@@ -8,7 +8,10 @@ spec:
   source:
     repoURL: https://github.com/kuzyo/gitops-k8-config.git
     targetRevision: HEAD
-    path: development
+    path: charts/ui
+    helm:
+      valueFiles:
+        - environments/development/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: gitops-fullstack-app-development
