@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: gitops-fullstack-app-ui
-          image: kuzyoyaroslav/gitops-fullstack-app-ui:b4db6bf13f87ee2bc28dd600acd7ba906f82eeff
+          image: kuzyoyaroslav/gitops-fullstack-app-ui:b66758f3136c4aa7c0c103a4eafb6f89144df8ce
           ports:
             - containerPort: 3000
