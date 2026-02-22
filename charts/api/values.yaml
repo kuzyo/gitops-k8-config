@@ -1,0 +1,9 @@
+replicas: 1
+
+image:
+  repository: kuzyoyaroslav/gitops-fullstack-app
+  tag: latest
+
+service:
+  port: 3001
+  type: NodePort

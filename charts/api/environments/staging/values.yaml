@@ -1,0 +1,4 @@
+replicas: 5
+
+image:
+  tag: 7d2c2fa2e70a2728616ee34d034b34325c18eaaf
