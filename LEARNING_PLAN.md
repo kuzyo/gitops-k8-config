@@ -40,6 +40,8 @@ This document tracks my learning journey with GitOps, Kubernetes, Helm, and Argo
 - [x] Default values vs environment-specific overrides
 - [x] Deploying with `helm upgrade --install`
 - [x] Dry-run with `helm template`
+- [x] Created Helm chart for UI
+- [x] Created Helm chart for API
 
 ### ArgoCD
 - [x] ArgoCD architecture (repo-server, application-controller, server)
@@ -48,6 +50,7 @@ This document tracks my learning journey with GitOps, Kubernetes, Helm, and Argo
 - [x] ArgoCD with Helm charts
 - [x] Debugging ArgoCD sync issues
 - [x] Force sync and cache clearing
+- [x] Separate ArgoCD apps for UI and API
 
 ### CI/CD with GitHub Actions
 - [x] Building and pushing Docker images
@@ -57,13 +60,19 @@ This document tracks my learning journey with GitOps, Kubernetes, Helm, and Argo
 
 ---
 
+## ✅ Recently Completed
+
+- [x] Create Helm chart for API (same pattern as UI)
+- [x] Separate ArgoCD applications for UI and API
+- [x] Delete old manifest folders (`development/`, `staging/`, `production/`)
+- [x] Clean project structure with Helm charts
+
+---
+
 ## 🔄 In Progress
 
-### Complete Current Setup
-- [ ] Create Helm chart for API (same pattern as UI)
-- [ ] Add `imagePullSecrets` to Helm templates
+- [ ] Add `imagePullSecrets` to Helm templates (avoid Docker rate limits)
 - [ ] Update CI/CD to use `yq` for Helm values updates
-- [ ] Delete old manifest folders (`development/`, `staging/`, `production/`)
 
 ---
 
@@ -166,27 +175,35 @@ This document tracks my learning journey with GitOps, Kubernetes, Helm, and Argo
 
 ```
 gitops-k8-config/
-├── apps/                           # ArgoCD Application definitions
-│   ├── application-development.yaml
-│   ├── application-staging.yaml
-│   └── application-production.yaml
-├── charts/                         # Helm charts
-│   └── ui/
+├── apps/                              # ArgoCD Application definitions
+│   ├── api-development.yaml           # API app for dev
+│   ├── api-staging.yaml               # API app for staging
+│   ├── api-production.yaml            # API app for prod
+│   ├── ui-development.yaml            # UI app for dev
+│   ├── ui-staging.yaml                # UI app for staging
+│   └── ui-production.yaml             # UI app for prod
+├── charts/                            # Helm charts
+│   ├── api/                           # API Helm chart
+│   │   ├── Chart.yaml
+│   │   ├── values.yaml                # Default values
+│   │   ├── templates/
+│   │   │   ├── deployment.yaml
+│   │   │   └── service.yaml
+│   │   └── environments/
+│   │       ├── development/values.yaml
+│   │       ├── staging/values.yaml
+│   │       └── production/values.yaml
+│   └── ui/                            # UI Helm chart
 │       ├── Chart.yaml
-│       ├── values.yaml             # Default values
+│       ├── values.yaml                # Default values
 │       ├── templates/
 │       │   ├── deployment.yaml
 │       │   └── service.yaml
-│       └── environments/           # Environment-specific values
-│           ├── development/
-│           │   └── values.yaml
-│           ├── staging/
-│           │   └── values.yaml
-│           └── production/
-│               └── values.yaml
-├── development/                    # OLD - To be deleted
-├── staging/                        # OLD - To be deleted
-└── production/                     # OLD - To be deleted
+│       └── environments/
+│           ├── development/values.yaml
+│           ├── staging/values.yaml
+│           └── production/values.yaml
+└── LEARNING_PLAN.md                   # This file
 ```
 
 ---
@@ -211,7 +228,15 @@ helm list                                    # List releases
 helm rollback <name> <revision>              # Rollback
 ```
 
-### ArgoCD
+### ArgoCD (via kubectl)
+```bash
+kubectl get applications -n argocd                    # List apps
+kubectl delete application <name> -n argocd           # Delete app
+kubectl apply -f apps/                                # Apply app definitions
+kubectl describe application <name> -n argocd         # App details
+```
+
+### ArgoCD CLI (if installed)
 ```bash
 argocd app list                              # List apps
 argocd app sync <app-name>                   # Sync app
@@ -244,3 +269,4 @@ argocd app get <app-name>                    # App details
 - Always test Helm templates with `helm template` before deploying
 - ArgoCD caches Git repos - restart `argocd-repo-server` if stuck
 - Multi-arch images are essential for ARM-based machines (Apple Silicon, AWS Graviton)
+- Use separate ArgoCD Applications for each service (UI, API) for independent deployments
