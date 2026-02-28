@@ -7,3 +7,6 @@ image:
 service:
   port: 3001
   type: NodePort
+
+imagePullSecrets:
+  - name: regcred
