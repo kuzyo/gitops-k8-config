@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Helm
+charts/*/charts/       # Downloaded chart dependencies
+*.tgz                  # Packaged charts
+
+# Secrets (NEVER commit these!)
+*.secret
+*.key
+*.pem
+secrets.yaml
+*-secret.yaml
+
+# Temporary files
+*.tmp
+*.bak
