@@ -66,13 +66,15 @@ This document tracks my learning journey with GitOps, Kubernetes, Helm, and Argo
 - [x] Separate ArgoCD applications for UI and API
 - [x] Delete old manifest folders (`development/`, `staging/`, `production/`)
 - [x] Clean project structure with Helm charts
+- [x] Add `imagePullSecrets` to Helm templates (avoid Docker rate limits)
+- [x] Update CI/CD to use `yq` for Helm values updates
+- [x] Ingress & Networking
 
 ---
 
 ## 🔄 In Progress
 
-- [ ] Add `imagePullSecrets` to Helm templates (avoid Docker rate limits)
-- [ ] Update CI/CD to use `yq` for Helm values updates
+(Pick your next topic!)
 
 ---
 
@@ -80,12 +82,12 @@ This document tracks my learning journey with GitOps, Kubernetes, Helm, and Argo
 
 ### Level 1: Essential Kubernetes Features
 
-#### Ingress & Networking
-- [ ] Ingress controllers (nginx-ingress)
-- [ ] Ingress resources and routing rules
-- [ ] Host-based and path-based routing
-- [ ] TLS/SSL termination
-- [ ] Local development with `/etc/hosts`
+#### ~~Ingress & Networking~~ ✅
+- [x] Ingress controllers (nginx-ingress)
+- [x] Ingress resources and routing rules
+- [x] Host-based and path-based routing
+- [ ] TLS/SSL termination (optional - requires cert-manager)
+- [x] Local development with `/etc/hosts`
 
 #### Configuration Management
 - [ ] ConfigMaps - Non-sensitive configuration
