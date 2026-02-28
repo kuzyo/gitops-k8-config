@@ -10,3 +10,8 @@ service:
 
 imagePullSecrets:
   - name: regcred
+
+ingress:
+  enabled: true
+  host: ui.local
+  className: nginx
