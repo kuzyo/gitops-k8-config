@@ -5,3 +5,7 @@ image:
 
 ingress:
   host: ui.staging.local
+
+config:
+  apiUrl: "http://api.staging.local"
+  logLevel: "info"

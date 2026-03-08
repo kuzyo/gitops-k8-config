@@ -5,3 +5,7 @@ image:
 
 ingress:
   host: ui.dev.local
+
+config:
+  apiUrl: "http://api.dev.local"
+  logLevel: "debug"

@@ -5,3 +5,7 @@ image:
 
 ingress:
   host: ui.prod.local
+
+config:
+  apiUrl: "http://api.prod.local"
+  logLevel: "warn"
