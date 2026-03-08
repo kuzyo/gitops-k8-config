@@ -69,6 +69,7 @@ This document tracks my learning journey with GitOps, Kubernetes, Helm, and Argo
 - [x] Add `imagePullSecrets` to Helm templates (avoid Docker rate limits)
 - [x] Update CI/CD to use `yq` for Helm values updates
 - [x] Ingress & Networking
+- [x] ConfigMaps - Environment-specific configuration
 
 ---
 
@@ -90,9 +91,9 @@ This document tracks my learning journey with GitOps, Kubernetes, Helm, and Argo
 - [x] Local development with `/etc/hosts`
 
 #### Configuration Management
-- [ ] ConfigMaps - Non-sensitive configuration
+- [x] ConfigMaps - Non-sensitive configuration
 - [ ] Secrets - Sensitive data (passwords, API keys)
-- [ ] Environment variables from ConfigMaps/Secrets
+- [x] Environment variables from ConfigMaps/Secrets
 - [ ] Mounting as files vs environment variables
 
 #### Health & Reliability

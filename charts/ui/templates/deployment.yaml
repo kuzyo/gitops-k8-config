@@ -24,3 +24,5 @@ spec:
           envFrom:
             - configMapRef:
                 name: gitops-fullstack-app-ui-config
+            - secretRef:
+                name: gitops-fullstack-app-ui-secret
