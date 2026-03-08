@@ -15,3 +15,7 @@ ingress:
   enabled: true
   host: ui.local
   className: nginx
+
+config:
+  apiUrl: "http://localhost:3001"
+  logLevel: "info"

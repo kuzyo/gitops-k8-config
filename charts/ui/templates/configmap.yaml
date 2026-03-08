@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gitops-fullstack-app-ui-config
+data:
+  API_URL: {{ .Values.config.apiUrl | quote }}
+  LOG_LEVEL: {{ .Values.config.logLevel | quote }}
